@@ -1,0 +1,15 @@
+use("sample_training")
+
+// Unset sirve para borrar un atributo
+db.zips.find({city: "CLEVELAND"})
+
+db.zips.updateMany(
+        //query
+        { city: "CLEVELAND"},
+        //update - operators
+        {
+            $unset:{
+                my_data: ""     
+            }
+        }
+    )
