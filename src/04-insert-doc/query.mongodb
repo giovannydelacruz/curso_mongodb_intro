@@ -1,0 +1,3 @@
+use("platzistore")
+
+db.product.find()

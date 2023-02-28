@@ -1,0 +1,11 @@
+use("platzistore") // Mongo a pesar de no tener creada la bd de platzi store, con esta instruccion la crea.
+
+db.product.insertOne({ //Igual sucede con las colecciones.
+    name: "Product 1",
+    price: 1000
+}) 
+
+db.product.insertOne({
+    name: "Product 2",
+    price: 100
+}) 
