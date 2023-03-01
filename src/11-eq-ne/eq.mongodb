@@ -1,0 +1,9 @@
+use("platzi_store")
+
+// Using $eq
+
+// db.inventory.find({qty:20}) // el operador viene implicito
+// db.inventory.find({qty:{$eq:20}})
+// db.inventory.find({"item.code":"123"}) //cuando la busqueda es dentro de un subdocumento se pone dentro de comillas
+db.inventory.find({"item.code":{$eq:"123"}})
+
