@@ -1,0 +1,25 @@
+use("platzi_store")
+
+db.inventory.find({
+    "item.description": "Single line description."
+})
+
+db.inventory.find({
+    "item.description": {$regex: /line/}
+})
+
+db.inventory.find({
+    "item.description": {$regex: /LINE/i} //Se pone i para decirle a la funcion que coga tanto mayuscula como minuscula
+})
+
+db.inventory.find({
+    "item.description": {$regex: /line$/i} //Que termine en line.
+})
+
+db.inventory.find({
+    "item.description": {$regex: /^single/i} //Que comience en single.
+})
+
+db.inventory.find({
+    "item.description": {$regex: /^s/im} //m sirve para multiline (salto de linea).
+})
