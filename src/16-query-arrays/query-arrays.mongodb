@@ -1,0 +1,29 @@
+use("platzi_store")
+
+// $in entro de los elementos yo pueda encontrar los elementos.
+
+db.inventory.find({qty:{$in:[20,25]}})
+db.inventory.find({tags:{$in:["books","electronics"]}}) // para buscar dentro de los elementos pasados en los corchetes
+db.inventory.find({tags:{$nin:["books","electronics"]}}) // trae documentos en dondo NO este el 20 Or el 25
+
+// a continuación solo funciones que sirven para ARRAYS!
+
+db.inventory.find({tags: "book"})
+db.inventory.find({tags: ["school","book"]}) // Trae el que cumple EXACTAMENTE con school y book. Tanto la posición.
+db.inventory.find({tags: ["book","school"]}) // En este caso no trae nada, dado que la posición no coincide.
+
+// $all. Hace las veces del and
+db.inventory.find({tags: {$all:["book","school"]}}) // En este caso no importa la posicion.
+
+// $size. Trae los documentos en el que el array tengan el tamaño pasado como parametro.
+db.inventory.find({tags: {$size:2}})
+
+// $elemMatch. Vendrian siendo como hacer querys anidados en SQL.
+db.survey.find({results:{$elemMatch:{product:"xyz"}}})
+db.survey.find({results:{
+    $elemMatch:{
+        product:"xyz", 
+        score: {$gte:7}
+        }
+    }
+})
