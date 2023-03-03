@@ -1,0 +1,14 @@
+use("sample_airbnb")
+
+db.listingsAndReviews.find({
+    amenities: "Wifi"
+},
+{
+    price:1, _id:0, amenities:1
+})
+
+// aggregation frameworks
+// [],[],[] funciona como pipelines, donde cada uno alimenta al otro
+db.listingsAndReviews.aggregate({
+    {$match: {amenities: "Wifi"}}
+})
