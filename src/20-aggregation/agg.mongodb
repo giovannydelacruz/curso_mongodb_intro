@@ -9,6 +9,8 @@ db.listingsAndReviews.find({
 
 // aggregation frameworks
 // [],[],[] funciona como pipelines, donde cada uno alimenta al otro
-db.listingsAndReviews.aggregate({
-    {$match: {amenities: "Wifi"}}
-})
+db.listingsAndReviews.aggregate(
+[   {$match: {amenities: "Wifi"}}, //find
+    {$project: {address: 1}}, //project
+    {$group: {_id: "$address.country", count: {$sum:1}}} 
+    ])
